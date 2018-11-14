@@ -53,8 +53,8 @@ namespace EasyWiFi.ServerControls
         {
             orientation.w = gyro[index].GYRO_W;
             orientation.x = gyro[index].GYRO_X;
-            orientation.y = gyro[index].GYRO_Y;
-            orientation.z = gyro[index].GYRO_Z;
+            //orientation.y = gyro[index].GYRO_Y;
+            //orientation.z = gyro[index].GYRO_Z;
 
             transform.localRotation = orientation;
         }
