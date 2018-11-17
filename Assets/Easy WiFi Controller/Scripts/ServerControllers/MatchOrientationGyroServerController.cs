@@ -16,10 +16,12 @@ namespace EasyWiFi.ServerControls
         //runtime variables
         GyroControllerType[] gyro = new GyroControllerType[EasyWiFiConstants.MAX_CONTROLLERS];
         int currentNumberControllers = 0;
-        Quaternion orientation;
+        public static Quaternion orientation;
 
         void OnEnable()
         {
+
+
             EasyWiFiController.On_ConnectionsChanged += checkForNewConnections;
 
             //do one check at the beginning just in case we're being spawned after startup and after the callbacks
@@ -53,10 +55,11 @@ namespace EasyWiFi.ServerControls
         {
             orientation.w = gyro[index].GYRO_W;
             orientation.x = gyro[index].GYRO_X;
-            //orientation.y = gyro[index].GYRO_Y;
-            //orientation.z = gyro[index].GYRO_Z;
+            orientation.y = gyro[index].GYRO_Y;
+            orientation.z = gyro[index].GYRO_Z;
 
             transform.localRotation = orientation;
+
         }
 
         public void checkForNewConnections(bool isConnect, int playerNumber)

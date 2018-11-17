@@ -145,6 +145,9 @@
     <Compile Include="Assets\Easy WiFi Controller\Scripts\ServerControllers\StandardJoystickServerController.cs" />
     <Compile Include="Assets\Easy WiFi Controller\Scripts\ServerControllers\StandardSliderServerController.cs" />
     <Compile Include="Assets\Easy WiFi Controller\Scripts\ServerControllers\StandardTouchpadServerController.cs" />
+    <Compile Include="Assets\myjig.cs" />
+    <Compile Include="Assets\MyScripts\AnimationControl.cs" />
+    <Compile Include="Assets\think.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/jordanmurti/Documents/Programing/CreativeLabsSatisfyingWorkout/SatisfyingWorkout/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
