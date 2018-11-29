@@ -145,6 +145,7 @@
     <Compile Include="Assets\Easy WiFi Controller\Scripts\ServerControllers\StandardSliderServerController.cs" />
     <Compile Include="Assets\Easy WiFi Controller\Scripts\ServerControllers\StandardTouchpadServerController.cs" />
     <Compile Include="Assets\myjig.cs" />
+    <Compile Include="Assets\MyScripts\CustomGyroMover.cs" />
     <Compile Include="Assets\MyScripts\CustomGyroServerController.cs" />
     <Compile Include="Assets\think.cs" />
     <Reference Include="UnityEditor.StandardEvents">

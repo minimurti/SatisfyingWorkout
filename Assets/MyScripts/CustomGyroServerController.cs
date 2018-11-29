@@ -18,7 +18,7 @@ namespace EasyWiFi.ServerControls
         public string notifyMethod = "yourMethod";
 
         public static Quaternion orientation;
-        public static float piF, angle, angleref;
+        public static float piF, angle, angleref, angleOld, angleDiff;
         string messagew, messagex, messagey, messagez, messagevect;
         Vector3 vectr, vectref, vectrefup, vectrefcross;
         double pi;
@@ -95,11 +95,21 @@ namespace EasyWiFi.ServerControls
             //vectu = orientation * Vector3.up;
             vectr = orientation * Vector3.right; //a unit vector [001] or... [010]... something
 
+            Vector3.ProjectOnPlane(vectr, vectrefcross);
 
             angle = Vector3.SignedAngle(vectref, vectr, vectrefcross);
             if (angle / angleref < 0)
                 angle = 0;
-            
+
+            if (angle / angleref > 1)
+                angleOld=angle;//this prevents movement when the legs arent moving. 
+
+            angleDiff = angle - angleOld;
+            //transform.Translate(Vector3.forward * Math.Abs(angle-angleOld)/50);
+
+
+
+
             anim.Play("CINEMA_4D_Main", 0, angle/angleref);
 
             messagex = String.Format("{0:0,0.00}", angle / angleref);
@@ -183,7 +193,7 @@ namespace EasyWiFi.ServerControls
             //messagew = String.Format("{0:0,0.00}", oriz);
             //messagew += "*pi radians :z";
             //Debug.Log(messagew, gameObject);
-
+            angleOld = angle;
 
         }
 
