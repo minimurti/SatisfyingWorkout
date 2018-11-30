@@ -19,8 +19,8 @@ namespace EasyWiFi.ServerControls
 
         public static Quaternion orientation;
         public static float piF, angle, angleref, angleOld, angleDiff;
-        string messagew, messagex, messagey, messagez, messagevect;
-        Vector3 vectr, vectref, vectrefup, vectrefcross;
+        string message;
+        Vector3 vectr, vectref, vectrefup, vectrefcross,vectproj;
         double pi;
 
         //runtime variables
@@ -95,43 +95,53 @@ namespace EasyWiFi.ServerControls
             //vectu = orientation * Vector3.up;
             vectr = orientation * Vector3.right; //a unit vector [001] or... [010]... something
 
-            Vector3.ProjectOnPlane(vectr, vectrefcross);
-
-            angle = Vector3.SignedAngle(vectref, vectr, vectrefcross);
-            if (angle / angleref < 0)
-                angle = 0;
-
-            if (angle / angleref > 1)
-                angleOld=angle;//this prevents movement when the legs arent moving. 
-
-            angleDiff = angle - angleOld;
-            //transform.Translate(Vector3.forward * Math.Abs(angle-angleOld)/50);
-
-
-
-
-            anim.Play("CINEMA_4D_Main", 0, angle/angleref);
-
-            messagex = String.Format("{0:0,0.00}", angle / angleref);
-            messagex += ": angle ratio";
-            Debug.Log(messagex, gameObject);
 
 
 
             if (Input.GetAxis("Vertical") < 0)
             {
-                vectref=vectr;
-                Debug.Log(vectref.ToString(), gameObject);
+                vectref = vectr;
             }
 
             if (Input.GetAxis("Vertical") > 0)
             {
                 vectrefup = vectr;
                 vectrefcross = Vector3.Cross(vectref, vectrefup);
-                Debug.Log(vectrefup.ToString(), gameObject);
-                angleref = angle;//change this later
+                angleref = Vector3.SignedAngle(vectref,vectr, vectrefcross) ;
             }
 
+
+            vectproj = Vector3.ProjectOnPlane(vectr, vectrefcross);
+
+            angle = Vector3.SignedAngle(vectref, vectproj , vectrefcross);
+
+
+            if (angle / angleref < 0)
+            {
+                angle = 0;
+            }
+
+            if (angle / angleref > 1)
+            {
+                angleOld = angle;//this prevents movement when the legs arent moving. 
+                angle = angleref;//this prevents ratio from ever being larger than 1.
+                angleDiff = 0;
+            }
+            else
+            angleDiff = angle - angleOld;
+            //transform.Translate(Vector3.forward * Math.Abs(angle-angleOld)/50);
+
+
+
+
+            anim.Play("CINEMA_4D_Main", 0, (angle/angleref)*Vector3.Magnitude(vectproj));
+
+            message = String.Format("{0:0,0.00}", angle / angleref);
+            message += ": angle ratio";
+            Debug.Log(message, gameObject);
+            message = String.Format("{0:0,0.00}", Vector3.Magnitude(vectproj));
+            message += ": magnitude of projection";
+            Debug.Log(message, gameObject);
 
 
 
