@@ -136,12 +136,12 @@ namespace EasyWiFi.ServerControls
 
             anim.Play("CINEMA_4D_Main", 0, (angle/angleref)*Vector3.Magnitude(vectproj));
 
-            message = String.Format("{0:0,0.00}", angle / angleref);
-            message += ": angle ratio";
-            Debug.Log(message, gameObject);
-            message = String.Format("{0:0,0.00}", Vector3.Magnitude(vectproj));
-            message += ": magnitude of projection";
-            Debug.Log(message, gameObject);
+            //message = String.Format("{0:0,0.00}", angle / angleref);
+            //message += ": angle ratio";
+            //Debug.Log(message, gameObject);
+            //message = String.Format("{0:0,0.00}", Vector3.Magnitude(vectproj));
+            //message += ": magnitude of projection";
+            //Debug.Log(message, gameObject);
 
 
 
