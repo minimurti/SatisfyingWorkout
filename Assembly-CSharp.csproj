@@ -61,6 +61,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AppleLocalMultiplayer\Demos\ApiDemo\Scripts\ApiDemo.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Demos\Generic\Scripts\CameraFade.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Demos\Generic\Scripts\DemoGuiBase.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Demos\Generic\Scripts\DemoMenu.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Demos\Generic\Scripts\IncomingInvitationPanelData.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Demos\Generic\Scripts\LogWindowController.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Demos\Generic\Scripts\PeerBrowserController.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Demos\Generic\Scripts\PeerBrowserPeerButtonData.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Demos\MultiplayerDemo\Scripts\AppleLocalMultiplayerDemoNetworkManager.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Demos\MultiplayerDemo\Scripts\CreateTapMarkerMessage.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Demos\MultiplayerDemo\Scripts\MultiplayerDemoGui.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Demos\MultiplayerDemo\Scripts\TapMarker.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Demos\MultiplayerDemo\Scripts\TestActor.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Source\UNetSupport\AppleLocalMultiplayerNetworkLobbyManager.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Source\UNetSupport\AppleLocalMultiplayerNetworkManager.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Source\UNetSupport\AppleLocalMultiplayerNetworkManagerHelper.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Source\UNetSupport\AppleLocalMultiplayerNetworkManagerHUD.cs" />
+    <Compile Include="Assets\AppleLocalMultiplayer\Source\UNetSupport\ICustomDeviceBrowser.cs" />
     <Compile Include="Assets\Easy WiFi Controller\Scripts\ClientBackchannel\BoolClientBackchannel.cs" />
     <Compile Include="Assets\Easy WiFi Controller\Scripts\ClientBackchannel\DecimalClientBackchannel.cs" />
     <Compile Include="Assets\Easy WiFi Controller\Scripts\ClientBackchannel\DoubleClientBackchannel.cs" />
@@ -145,9 +163,16 @@
     <Compile Include="Assets\Easy WiFi Controller\Scripts\ServerControllers\StandardSliderServerController.cs" />
     <Compile Include="Assets\Easy WiFi Controller\Scripts\ServerControllers\StandardTouchpadServerController.cs" />
     <Compile Include="Assets\myjig.cs" />
-    <Compile Include="Assets\MyScripts\CustomGyroMover.cs" />
     <Compile Include="Assets\MyScripts\CustomGyroServerController.cs" />
+    <Compile Include="Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\think.cs" />
+    <None Include="Assets\AppleLocalMultiplayer\Libraries\Assemblies\Editor_Windows\AppleLocalMultiplayer.xml" />
+    <None Include="Assets\AppleLocalMultiplayer\Libraries\Assemblies\Editor_macOS\AppleLocalMultiplayer.xml" />
+    <None Include="Assets\AppleLocalMultiplayer\Local Multiplayer for Apple - Changelog.txt" />
+    <None Include="Assets\AppleLocalMultiplayer\Libraries\Assemblies\macOS\AppleLocalMultiplayer.xml" />
+    <None Include="Assets\AppleLocalMultiplayer\Libraries\Assemblies\tvOS\AppleLocalMultiplayer.xml" />
+    <None Include="Assets\AppleLocalMultiplayer\Libraries\Assemblies\iOS\AppleLocalMultiplayer.xml" />
+    <None Include="Assets\AppleLocalMultiplayer\Local Multiplayer for Apple - ReadMe.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/jordanmurti/Documents/Programing/CreativeLabsSatisfyingWorkout/SatisfyingWorkout/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -360,6 +385,9 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="AppleLocalMultiplayer">
+      <HintPath>/Users/jordanmurti/Documents/Programing/CreativeLabsSatisfyingWorkout/SatisfyingWorkout/Assets/AppleLocalMultiplayer/Libraries/Assemblies/Editor_macOS/AppleLocalMultiplayer.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>/Users/jordanmurti/Library/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>

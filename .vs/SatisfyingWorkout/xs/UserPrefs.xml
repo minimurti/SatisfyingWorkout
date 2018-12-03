@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{FCE6F04D-9C97-79AB-E560-D3676E389F7C}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MyScripts/CustomGyroMover.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MyScripts/CustomGyroServerController.cs">
     <Files>
-      <File FileName="Assets/MyScripts/CustomGyroServerController.cs" Line="159" Column="45" />
-      <File FileName="Assets/myjig.cs" Line="1" Column="1" />
-      <File FileName="Assets/think.cs" Line="1" Column="1" />
-      <File FileName="Assets/MyScripts/CustomGyroMover.cs" Line="9" Column="1" />
+      <File FileName="Assets/MyScripts/CustomGyroServerController.cs" Line="23" Column="9" />
+      <File FileName="Assets/MyScripts/CustomGyroMover.cs" Line="29" Column="30" />
+      <File FileName="Assets/Easy WiFi Controller/Scripts/Miscellaneous/SelectPlayer.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

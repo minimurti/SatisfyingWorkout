@@ -8,10 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: 5dd50b93d36ad4608b0e10205c6a6234
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Controller.unity
     guid: f12206ac91bba475aabd49423b4a8268
+  - enabled: 0
+    path: Assets/AppleLocalMultiplayer/Demos/MultiplayerDemo/MultiplayerDemo.unity
+    guid: d5984c32bb364d24ea2e169c50c137f4
   m_configObjects: {}

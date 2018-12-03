@@ -6,31 +6,35 @@ using System;
 
 namespace EasyWiFi.ServerControls
 {
-   
+
     [AddComponentMenu("EasyWiFiController/Server/UserControls/Custom Gyro")]
     public class CustomGyroServerController : MonoBehaviour, IServerController
     {
-
-        public static Animator anim;
-
+        public bool MoveForward, upPressed, Downpressed;
+        public bool Animated = true; 
+        float motion, moveAmount;
+        public int SPEEDInverse = 30; //change this to make it move faster or slower
+        public float INETRTIA = 0.04f; 
         public string control = "Gyro";
         public EasyWiFiConstants.PLAYER_NUMBER player = EasyWiFiConstants.PLAYER_NUMBER.Player1;
         public string notifyMethod = "yourMethod";
 
         public static Quaternion orientation;
-        public static float piF, angle, angleref, angleOld, angleDiff;
+        float angle, angleref, angleOld, angleDiff, angleRatio;
+        //public static float[] angleDiffs = new float[EasyWiFiConstants.MAX_CONTROLLERS];
         string message;
         Vector3 vectr, vectref, vectrefup, vectrefcross,vectproj;
-        double pi;
+  
 
         //runtime variables
+        Animator[] anim = new Animator[EasyWiFiConstants.MAX_CONTROLLERS];
         GyroControllerType[] gyro = new GyroControllerType[EasyWiFiConstants.MAX_CONTROLLERS];
         int currentNumberControllers = 0;
 
         void OnEnable()
         {
-            pi = Math.PI;
-            piF = Convert.ToSingle(pi);
+
+
             vectref[0] = 0;
             vectref[1] = 0;
             vectref[2] = -1;
@@ -43,8 +47,7 @@ namespace EasyWiFi.ServerControls
 
             angleref = 60;
 
-            anim = this.GetComponent<Animator>();
-            anim.speed = 0f;
+  
             EasyWiFiController.On_ConnectionsChanged += checkForNewConnections;
 
             //do one check at the beginning just in case we're being spawned after startup and after the callbacks
@@ -81,9 +84,11 @@ namespace EasyWiFi.ServerControls
         {
 
             //anim.Play("CINEMA_4D_Main", 0, thetafinal/(2*piT));
-
-
-
+            if (Animated)
+            {
+                anim[index] = this.GetComponent<Animator>();
+                anim[index].speed = 0f;
+            }
             orientation.w = gyro[index].GYRO_W;
             orientation.x = gyro[index].GYRO_X;
             orientation.y = gyro[index].GYRO_Y;
@@ -101,6 +106,7 @@ namespace EasyWiFi.ServerControls
             if (Input.GetAxis("Vertical") < 0)
             {
                 vectref = vectr;
+                upPressed = true;
             }
 
             if (Input.GetAxis("Vertical") > 0)
@@ -108,6 +114,7 @@ namespace EasyWiFi.ServerControls
                 vectrefup = vectr;
                 vectrefcross = Vector3.Cross(vectref, vectrefup);
                 angleref = Vector3.SignedAngle(vectref,vectr, vectrefcross) ;
+                Downpressed = true;
             }
 
 
@@ -119,22 +126,40 @@ namespace EasyWiFi.ServerControls
             if (angle / angleref < 0)
             {
                 angle = 0;
-            }
-
-            if (angle / angleref > 1)
-            {
-                angleOld = angle;//this prevents movement when the legs arent moving. 
-                angle = angleref;//this prevents ratio from ever being larger than 1.
                 angleDiff = 0;
             }
-            else
-            angleDiff = angle - angleOld;
+
+            else 
+                if (angle / angleref > 1)
+                {
+                    angleOld = angle;//this prevents movement when the legs arent moving. 
+                    angle = angleref;//this prevents ratio from ever being larger than 1.
+                    angleDiff = 0;
+                }
+                else
+                    angleDiff = angle - angleOld;
             //transform.Translate(Vector3.forward * Math.Abs(angle-angleOld)/50);
 
 
 
+            if (Animated)
+                anim[index].Play("CINEMA_4D_Main", 0, (angle/angleref)*Vector3.Magnitude(vectproj));
 
-            anim.Play("CINEMA_4D_Main", 0, (angle/angleref)*Vector3.Magnitude(vectproj));
+
+
+
+            if(MoveForward && upPressed && Downpressed){
+                motion = Math.Abs(angleDiff) / SPEEDInverse;
+                if (motion > moveAmount)
+                    moveAmount = motion;
+                else
+                    if (moveAmount > 0)
+                        moveAmount -= INETRTIA;
+                transform.Translate(Vector3.forward * moveAmount);
+
+            }
+
+
 
             //message = String.Format("{0:0,0.00}", angle / angleref);
             //message += ": angle ratio";
@@ -204,6 +229,7 @@ namespace EasyWiFi.ServerControls
             //messagew += "*pi radians :z";
             //Debug.Log(messagew, gameObject);
             angleOld = angle;
+            //angleDiffs[index] = angleDiff;  
 
         }
 

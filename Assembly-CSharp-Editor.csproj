@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AppleLocalMultiplayer\Source\Editor\InvalidBuildPlatformWarnings.cs" />
     <Compile Include="Assets\Easy WiFi Controller\Scripts\Core\Editor\EasyWiFiControlsMenu.cs" />
     <Compile Include="Assets\Easy WiFi Controller\Scripts\Core\Editor\EasyWiFiLandscapeController.cs" />
     <Compile Include="Assets\Easy WiFi Controller\Scripts\Core\Editor\EasyWiFiManagerEditor.cs" />
@@ -322,6 +323,9 @@
     </Reference>
     <Reference Include="UnityEditor.OSXStandalone.Extensions">
       <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="AppleLocalMultiplayer">
+      <HintPath>/Users/jordanmurti/Documents/Programing/CreativeLabsSatisfyingWorkout/SatisfyingWorkout/Assets/AppleLocalMultiplayer/Libraries/Assemblies/Editor_macOS/AppleLocalMultiplayer.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>/Users/jordanmurti/Library/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
